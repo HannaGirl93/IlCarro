@@ -1,5 +1,6 @@
 package tests;
 
+import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -15,6 +16,20 @@ public class LoginTests extends TestBase{
 
     @Test
     public void loginSuccess(){
+
+        app.getHeplerUser().openLoginRegistrationForm();
+        app.getHeplerUser().fillLoginRegistrationForm("bunny@mail.com", "Bunny12345$");
+        app.getHeplerUser().submitLogin();
+        Assert.assertEquals(app.getHeplerUser().getMessage(),"Logged in success");
+        app.getHeplerUser().closeDialogContainer();
+
+    }
+
+    @Test
+    public void loginSuccessModel(){
+        User user = new User().setEmail("buuny@mail.com");
+
+
 
         app.getHeplerUser().openLoginRegistrationForm();
         app.getHeplerUser().fillLoginRegistrationForm("bunny@mail.com", "Bunny12345$");
