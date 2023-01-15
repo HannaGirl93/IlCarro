@@ -27,7 +27,7 @@ public class LoginTests extends TestBase{
 
     @Test
     public void loginSuccessModel(){
-        User user = new User().setEmail("buuny@mail.com");
+        User user = new User().withEmail("buuny@mail.com");
 
 
 

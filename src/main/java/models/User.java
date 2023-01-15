@@ -22,23 +22,23 @@ public class User {
         return password;
     }
 
-    public User setName(String name) {
+    public User withName(String name) {
         this.name = name;
         //return new User();
         return this;
     }
 
-    public User setLastName(String lastName) {
+    public User withLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
 
-    public User setEmail(String email) {
+    public User withEmail(String email) {
         this.email = email;
         return this;
     }
 
-    public User setPassword(String password) {
+    public User withPassword(String password) {
         this.password = password;
         return this;
     }
