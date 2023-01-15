@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HeplerUser extends HelperBase {
 
+
     public HeplerUser(WebDriver wd) {
 
         super(wd);
@@ -25,5 +26,22 @@ public class HeplerUser extends HelperBase {
     public void submitLogin() {
         click(By.cssSelector("button[type='submit']"));
 
+    }
+
+    public String getMessage() {
+        return wd.findElement(By.cssSelector("div.dialog-container>h2")).getText();
+    }
+
+    public void closeDialogContainer() {
+        click(By.xpath("//button[text()='Ok']"));
+    }
+
+    public boolean isLogged() {
+        return isElementPresent(By.xpath("//button[text()='Logout ']"));
+    }
+
+
+    public void logout() {
+        click(By.xpath("//button[text()='Logout ']"));
     }
 }

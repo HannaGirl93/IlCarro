@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tests.LoginTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-10T16:19:22" hostname="LAPTOP-AP8CUR31" time="0.425">
+<testsuite name="tests.LoginTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-15T08:54:26" hostname="LAPTOP-AP8CUR31" time="1.438">
   <properties/>
-  <testcase name="loginSuccess" classname="tests.LoginTests" time="0.425"/>
+  <testcase name="loginSuccess" classname="tests.LoginTests" time="1.438"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
