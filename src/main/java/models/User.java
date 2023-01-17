@@ -1,30 +1,14 @@
-package models;
+package model;
 
 public class User {
-    public String name;
-    public String lastName;
-    public String email;
-    public String password;
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
+    private String name;
+    private String lastName;
+    private String email;
+    private String password;
 
     public User withName(String name) {
         this.name = name;
-        //return new User();
+        // return new User();
         return this;
     }
 
@@ -41,6 +25,22 @@ public class User {
     public User withPassword(String password) {
         this.password = password;
         return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override
