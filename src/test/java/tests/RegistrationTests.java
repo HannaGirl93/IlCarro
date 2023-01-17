@@ -2,6 +2,7 @@ package tests;
 
 import model.User;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -21,12 +22,14 @@ public class RegistrationTests extends TestBase{
     public void registrationSuccess(){
         Random random = new Random();
         int i = random.nextInt(1000);
-        User user = new User().withName("Lisa").withLastName("Simpson").withEmail("lisa"+i+"@mail.com").withPassword("Lisa12345$");
+        User user = new User().withName("Anna").withLastName("Kalashnikov").withEmail("annakl"+i+"@mail.com").withPassword("Bunny12345$");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
-        app.getHelperUser().checkPolicy();
+        app.getHelperUser().checkPolicyXY();
         app.getHelperUser().submit();
+        //Assert.assertEquals(app.getHelperUser().getMessage(),"You are logged in success");
+
         //Assert
     }
     @Test
@@ -50,5 +53,10 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().checkPolicy();
         app.getHelperUser().submit();
         //Assert
+    }
+
+    @AfterMethod
+    public void postCondition(){
+        app.getHelperUser().closeDialogContainer();
     }
 }
