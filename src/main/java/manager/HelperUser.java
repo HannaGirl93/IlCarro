@@ -37,8 +37,8 @@ public class HelperUser extends HelperBase{
     }
 
     public boolean isLogged() {
-        //return isElementPresent(By.xpath("//button[text()=' Logout ']"));
-        return isElementPresent(By.cssSelector("div.header a:nth-child(5)"));
+        return isElementPresent(By.xpath("//button[text()=' Logout ']"));
+        //return isElementPresent(By.cssSelector("div.header a:nth-child(5)"));
     }
 
     public void logout() {

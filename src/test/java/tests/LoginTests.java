@@ -21,7 +21,7 @@ public class LoginTests extends TestBase{
     @Test
     public void loginSuccess(){
         app.getHelperUser().openFormLogin();
-        app.getHelperUser().fillLoginForm("noa@gmail.com","Nnoa12345$");
+        app.getHelperUser().fillLoginForm("bunny@mail.com","Bunny12345$");
         app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getMessage(),"Logged in success");
 
