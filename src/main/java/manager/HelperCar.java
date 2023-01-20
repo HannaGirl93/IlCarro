@@ -1,6 +1,6 @@
 package manager;
 
-import model.Car;
+import models.Car;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

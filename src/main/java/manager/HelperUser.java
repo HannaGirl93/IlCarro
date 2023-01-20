@@ -24,15 +24,10 @@ public class HelperUser extends HelperBase{
         type(By.id("password"),user.getPassword());
     }
 
-    public void submit() {
-        click(By.cssSelector("button:last-child"));
-        // click(By.xpath("//button[@type='submit']"));
 
-    }
 
     public String getMessage() {
-
-        return wd.findElement(By.cssSelector("//div.dialog-container>h2")).getText();
+        return wd.findElement(By.cssSelector("div.dialog-container>h2")).getText();
     }
 
     public void closeDialogContainer() {
@@ -64,7 +59,7 @@ public class HelperUser extends HelperBase{
         click(By.xpath("//a[text()=' Sign up ']"));
     }
 
-    public void fillRegistrationForm(model.User user) {
+    public void fillRegistrationForm(User user) {
         type(By.id("name"),user.getName());
         type(By.id("lastName"),user.getLastName());
         type(By.id("email"),user.getEmail());
@@ -72,26 +67,41 @@ public class HelperUser extends HelperBase{
     }
 
     public void checkPolicy() {
-        //click(By.cssSelector("label.checkbox-label.terms-label"));
-        click(By.cssSelector(".checkbox-label.terms-label"));
+        //click(By.id("terms-of-use"));
+        //click(By.cssSelector("label[for='terms-of-use']"));
+        if(!wd.findElement(By.id("terms-of-use")).isSelected()) {
+            click(By.cssSelector(".checkbox-container"));
+        }
     }
-
     public void checkPolicyXY(){
-        Dimension size = wd.manage().window().getSize();
-        System.out.println("Window Height" + size.getHeight());
-        System.out.println("Window Width" + size.getWidth());
 
-        WebElement label = wd.findElement(By.cssSelector("label.checkbox-label.terms-label"));
+        Dimension size = wd.manage().window().getSize();
+        System.out.println("Window Height "+ size.getHeight());
+        System.out.println("Window Width "+ size.getWidth());
+
+        WebElement label =wd.findElement(By.cssSelector("label[for='terms-of-use']"));
 
         Rectangle rect = label.getRect();
         int xOffset = rect.getWidth()/2;
 
         Actions actions = new Actions(wd);
-        actions.moveToElement(label, -xOffset,0).click().release().perform();
+        actions.moveToElement(label,-xOffset,0).click().release().perform();
+
+    }
+    public void checkPolicyJS() {
+        JavascriptExecutor js  = (JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('#terms-of-use').checked=true;");
+
     }
 
-    public void checkPolicyJS(){
-        JavascriptExecutor js = (JavascriptExecutor) wd;
-        js.executeScript("document.querySelector('#terms-of-use').checked=true;\n");
+    public boolean isErrorMessageContains(String message) {
+        return wd.findElement(By.cssSelector(".error")).getText().contains(message);
+    }
+
+    public void login(User user) {
+        openFormLogin();
+        fillLoginForm(user);
+        submit();
+        closeDialogContainer();
     }
 }
